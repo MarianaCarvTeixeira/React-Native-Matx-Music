@@ -8,8 +8,8 @@ export default function Home() {
     <View style={styles.container}>
       <FlatList
       data={albumCategories}
-      renderItem={({item})=> 
-      <AlbumCategory title={item.title} albums={item.albums}/>}
+      renderItem={({item})=> (
+      <AlbumCategory title={item.title} albums={item.albums}/>)}
       keyExtractor={(item)=> item.id}
       /> 
     </View>
