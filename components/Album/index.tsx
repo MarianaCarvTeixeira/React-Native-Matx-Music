@@ -1,17 +1,13 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
 import styles from './styles';
+import {Album} from '../../types'
 
 export type AlbumProps = {
-
-    album: {
-        id: string;
-        imageUri: string;
-        artistsHeadLine: string;
-    }
+    album: Album,
 }
 
-export default function Album(props: AlbumProps) {
+export default function AlbumComponent(props: AlbumProps) {
     return (
         <View style={styles.container}>
             <Image source={{ uri: props.album.imageUri }} style={styles.image}/>
@@ -19,4 +15,3 @@ export default function Album(props: AlbumProps) {
         </View>
     )
 }
-

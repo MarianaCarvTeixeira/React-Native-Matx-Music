@@ -1,24 +1,61 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Album from '../components/Album';
+import AlbumCategory from '../components/AlbumCategory';
 
-const album = {
+const albumCategory = {
   id: '1',
-  imageUri: 'https://upload.wikimedia.org/wikipedia/pt/7/75/Taylor_Swift_-_Fearless.jpg',
-  artistsHeadLine:'Taylor Swift'
+  title: 'Favoritos',
+  albums: [
+    {
+      id: '1',
+      imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
+      artistsHeadLine: 'Ana Vitoria',
+    },
+    {
+      id: '2',
+      imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
+      artistsHeadLine: 'Ana Vitoria',
+    },
+    {
+      id: '3',
+      imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
+      artistsHeadLine: 'Ana Vitoria',
+    },
+    {
+      id: '4',
+      imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
+      artistsHeadLine: 'Ana Vitoria',
+    },
+    {
+      id: '5',
+      imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
+      artistsHeadLine: 'Ana Vitoria',
+    },
+    {
+      id: '6',
+      imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
+      artistsHeadLine: 'Ana Vitoria',
+    },
+    {
+      id: '7',
+      imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
+      artistsHeadLine: 'Ana Vitoria',
+    }
+  ]
+
 }
 
-export default function Home(){
+export default function Home() {
   return (
     <View style={styles.container}>
-    <Album album={album}/>
+      <AlbumCategory title={ albumCategory.title} albums={albumCategory.albums} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
+  container: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   }
