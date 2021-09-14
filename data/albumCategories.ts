@@ -11,7 +11,7 @@ export default [{
       {
         id: '2',
         imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
-        artistsHeadLine: 'Ana Vitoria',
+        artistsHeadLine: 'Aninha',
       },
       {
         id: '3',
