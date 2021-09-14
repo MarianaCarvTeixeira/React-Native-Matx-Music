@@ -36,9 +36,12 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
 
 export type Album = {
   id: string;
+  name: string;
+  by: string;
+  numberOfLikes: number;
   imageUri: string;
-  artistsHeadLine: string;
-};
+  artistsHeadline: string;
+}
 
 export type TabOneParamList = {
   TabOneScreen: undefined;
