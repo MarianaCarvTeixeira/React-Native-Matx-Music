@@ -1,40 +1,9 @@
 import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {useRoute} from '@react-navigation/native'
+import albumDetails from '../data/albumDetails';
+import SongList from '../components/SongList';
 
-const album = {
-    id:'11',
-    name: 'good vibes',
-    by: 'spotify',
-    numberOfLikes: 38,
-    imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
-    artistsHeadLine: 'Ana Vitoria',
-    Songs: [{
-        id:1,
-        imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
-        title: 'Some Song',
-        artist: 'Ana Vitoria',
-    },
-    {
-        id:2,
-        imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
-        title: 'Some Song',
-        artist: 'Ana Vitoria',
-    },
-    {
-        id:3,
-        imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
-        title: 'Some Song',
-        artist: 'Ana Vitoria',
-    },
-    {
-        id:4,
-        imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
-        title: 'Some Song',
-        artist: 'Ana Vitoria',
-    },
-]
-}
 
 export default function AlbumScreen(){
 
@@ -46,7 +15,7 @@ export default function AlbumScreen(){
 
     return (
         <View>
-            
+            <SongList song={albumDetails.songs[0]}/>
         </View>
     )
 }

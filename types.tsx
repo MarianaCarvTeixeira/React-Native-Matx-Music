@@ -48,3 +48,10 @@ export type TabOneParamList = {
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
+
+export type Song = {
+  id: string;
+  imageUri: string;
+  title: string; 
+  artist: string; 
+}
