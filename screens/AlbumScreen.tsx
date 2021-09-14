@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 import {useRoute} from '@react-navigation/native'
 import albumDetails from '../data/albumDetails';
 import SongList from '../components/SongList';
@@ -16,6 +16,11 @@ export default function AlbumScreen(){
     return (
         <View>
             <SongList song={albumDetails.songs[0]}/>
+            <FlatList 
+            data={albumDetails.songs}
+            renderItem={({item}) =><SongList song={item}/> }
+            keyExtractor={(item) => item.id}
+            />
         </View>
     )
 }
