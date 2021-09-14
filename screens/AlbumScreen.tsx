@@ -16,47 +16,25 @@ const album = {
         artist: 'Ana Vitoria',
     },
     {
-        id:1,
+        id:2,
         imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
         title: 'Some Song',
         artist: 'Ana Vitoria',
     },
     {
-        id:1,
+        id:3,
         imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
         title: 'Some Song',
         artist: 'Ana Vitoria',
     },
     {
-        id:1,
-        imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
-        title: 'Some Song',
-        artist: 'Ana Vitoria',
-    },
-    {
-        id:1,
-        imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
-        title: 'Some Song',
-        artist: 'Ana Vitoria',
-    },
-    {
-        id:1,
-        imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
-        title: 'Some Song',
-        artist: 'Ana Vitoria',
-    },
-    {
-        id:1,
+        id:4,
         imageUri: 'https://images-na.ssl-images-amazon.com/images/I/71D5mOi3SdL._AC_SL1000_.jpg',
         title: 'Some Song',
         artist: 'Ana Vitoria',
     },
 ]
 }
-
-
-
-
 
 export default function AlbumScreen(){
 
@@ -68,7 +46,7 @@ export default function AlbumScreen(){
 
     return (
         <View>
-            <Text>Hello</Text>
+            
         </View>
     )
 }
