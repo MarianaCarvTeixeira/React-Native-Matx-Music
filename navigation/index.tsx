@@ -54,7 +54,7 @@ function BottomTabNavigator() {
       }}>
 
        <BottomTab.Screen
-        name="home"
+        name="Home"
         component={Home}
         options={{
           title: 'Inicio',
@@ -62,7 +62,7 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="search"
+        name="Search"
         component={TabTwoScreen}
         options={{
           title: 'Buscar',

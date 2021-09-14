@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
 import AlbumCategory from '../components/AlbumCategory';
 import albumCategories from '../data/albumCategories';
 
