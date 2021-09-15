@@ -3,48 +3,54 @@ import NotFoundScreen from "../../screens/NotFoundScreen";
 
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         position: 'absolute',
         bottom: 49,
         width: '100%',
         backgroundColor: "#131313",
-        flexDirection: 'row',
         borderWidth: 1,
-        borderColor: '#111111'        
+        borderColor: '#111111',
     },
-    rightContainer:{
+    row: {
+        flexDirection: 'row',
+    },
+    progress: {
+        height: 3,
+        backgroundColor: "darkorange",
+    },
+    rightContainer: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    image:{
+    image: {
         width: 75,
         height: 75,
     },
-    nameContainer:{
+    nameContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        margin:15,
+        margin: 15,
     },
-    dot:{
-        marginTop:5,
+    dot: {
+        marginTop: 5,
     },
-    title:{
+    title: {
         color: 'white',
         fontSize: 16,
         fontWeight: "bold"
     },
-    artist:{
+    artist: {
         color: 'lightgray',
         fontSize: 16,
     },
-    iconContainer:{
+    iconContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        width:65,
+        width: 65,
         justifyContent: 'space-between',
-        margin:5
+        margin: 10
     },
 });
 export default styles
