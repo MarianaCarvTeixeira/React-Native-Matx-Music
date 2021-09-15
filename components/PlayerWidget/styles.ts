@@ -1,6 +1,4 @@
 import { StyleSheet } from "react-native";
-import NotFoundScreen from "../../screens/NotFoundScreen";
-
 
 const styles = StyleSheet.create({
     container: {

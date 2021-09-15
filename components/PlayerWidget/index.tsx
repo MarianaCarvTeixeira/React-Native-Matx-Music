@@ -63,11 +63,11 @@ export default function PlayerWidget() {
         }
         return (position / duration) * 100;
     }
+    
 
     return (
-
         <View style={styles.container}>
-            <View style={[styles.progress, { width: `${getProgress()}%` }]} />
+            <View style={[styles.progress, { width: `${getProgress()}%`}]} />
             <View style={styles.row}>
                 <Image source={{ uri: song.imageUri }} style={styles.image} />
                 <View style={styles.rightContainer}>

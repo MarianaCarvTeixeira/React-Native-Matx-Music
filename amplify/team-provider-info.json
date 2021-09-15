@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reactnativematxmusic-dev-162523-authRole",
+      "UnauthRoleArn": "arn:aws:iam::762372090390:role/amplify-reactnativematxmusic-dev-162523-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::762372090390:role/amplify-reactnativematxmusic-dev-162523-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-reactnativematxmusic-dev-162523-deployment",
+      "UnauthRoleName": "amplify-reactnativematxmusic-dev-162523-unauthRole",
+      "StackName": "amplify-reactnativematxmusic-dev-162523",
+      "StackId": "arn:aws:cloudformation:us-east-1:762372090390:stack/amplify-reactnativematxmusic-dev-162523/adf205b0-165a-11ec-a01a-0ebc5ebc8037",
+      "AmplifyAppId": "d2l6n86tde00l9"
+    }
+  }
+}
