@@ -20,7 +20,7 @@ const song = {
 export default function PlayerWidget() {
 
     const [sound, setSound] = useState<Sound | null>(null);
-    const [isPlaying, setIsPlaying] = useState<boolean>(true);
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [duration, setDuration] = useState<number | null>(null);
     const [position, setPosition] = useState<number | null>(null);
 
