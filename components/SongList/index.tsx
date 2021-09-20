@@ -20,7 +20,7 @@ export default function SongList(props: SongListProps) {
     return (
         <View style={styles.container}>
             <TouchableWithoutFeedback onPress={onPlay}>
-                <View>
+                <View style={styles.insideContainer}>
                     <Image source={{ uri: song.imageUri }} style={styles.image} />
                     <View style={styles.rightContainer}>
                         <Text style={styles.title}>{song.title}</Text>

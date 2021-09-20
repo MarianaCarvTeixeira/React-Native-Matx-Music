@@ -13,7 +13,7 @@ import { getSong } from '../../src/graphql/queries';
 export default function PlayerWidget() {
 
     const [sound, setSound] = useState<Sound | null>(null);
-    const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [isPlaying, setIsPlaying] = useState<boolean>(true);
     const [duration, setDuration] = useState<number | null>(null);
     const [position, setPosition] = useState<number | null>(null);
     const [song, setSong] = useState(null);
@@ -100,5 +100,3 @@ export default function PlayerWidget() {
         </View>
     )
 }
-
-

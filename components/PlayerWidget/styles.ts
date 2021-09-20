@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         margin: 15,
+        width: '35%'
     },
     dot: {
         marginTop: 5,

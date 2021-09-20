@@ -63,27 +63,11 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Search"
-        component={Search}
-        options={{
-          title: 'Buscar',
-          tabBarIcon: ({ color }) => <EvilIcons name="search" size={30} style={{ marginBottom: -3 }} color={color} />,
-        }}
-      />
-      <BottomTab.Screen
         name="Library"
         component={TabTwoScreen}
         options={{
           title: 'Biblioteca',
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="playlist-music" size={30} style={{ marginBottom: -3 }} color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Premium"
-        component={TabTwoScreen}
-        options={{
-          title: 'Premium',
-          tabBarIcon: ({ color }) => <FontAwesome5 name="mix" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
     </BottomTab.Navigator>

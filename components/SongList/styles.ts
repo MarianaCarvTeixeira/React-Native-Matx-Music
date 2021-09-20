@@ -5,20 +5,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         margin:10,
     },
+    insideContainer:{
+        flexDirection: 'row',
+    },
     rightContainer:{
         justifyContent: 'space-around',
-        marginLeft: 15,
+        marginLeft: 10,
     },
     image:{
-        width: 75,
-        height: 75,
+        width: 70,
+        height: 70,
     },
     title:{
         color: 'white',
-        fontSize: 21,
+        fontSize: 18,
     },
     artist:{
         color: 'lightgray',
+        fontSize: 13,
     },
 });
 export default styles
