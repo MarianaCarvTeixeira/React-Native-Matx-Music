@@ -8,6 +8,17 @@ export const getAlbumCategory = /* GraphQL */ `
       id
       title
       albums {
+        items {
+          id
+          name
+          by
+          numberOfLikes
+          imageUri
+          artistsHeadline
+          albumCategoryId
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -50,12 +61,25 @@ export const getAlbum = /* GraphQL */ `
       imageUri
       artistsHeadline
       songs {
+        items {
+          id
+          imageUri
+          uri
+          title
+          artist
+          albumId
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       albumCategoryId
       albumCategory {
         id
         title
+        albums {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -78,7 +102,16 @@ export const listAlbums = /* GraphQL */ `
         numberOfLikes
         imageUri
         artistsHeadline
+        songs {
+          nextToken
+        }
         albumCategoryId
+        albumCategory {
+          id
+          title
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -102,7 +135,16 @@ export const getSong = /* GraphQL */ `
         numberOfLikes
         imageUri
         artistsHeadline
+        songs {
+          nextToken
+        }
         albumCategoryId
+        albumCategory {
+          id
+          title
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -125,6 +167,17 @@ export const listSongs = /* GraphQL */ `
         title
         artist
         albumId
+        album {
+          id
+          name
+          by
+          numberOfLikes
+          imageUri
+          artistsHeadline
+          albumCategoryId
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }

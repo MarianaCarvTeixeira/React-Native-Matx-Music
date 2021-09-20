@@ -14,6 +14,7 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps, TabOneParamList, TabTwoParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import AlbumScreen from '../screens/AlbumScreen';
+import Search from '../screens/Search';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -63,7 +64,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Search"
-        component={TabTwoScreen}
+        component={Search}
         options={{
           title: 'Buscar',
           tabBarIcon: ({ color }) => <EvilIcons name="search" size={30} style={{ marginBottom: -3 }} color={color} />,
