@@ -10,6 +10,7 @@ import { AppContext } from '../../AppContext';
 import { API, graphqlOperation } from "aws-amplify"
 import { getSong } from '../../src/graphql/queries';
 import LibraryData from '../Reducer/Reducer';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function PlayerWidget() {
 
@@ -20,6 +21,7 @@ export default function PlayerWidget() {
     const [song, setSong] = useState(null);
     const [heart, setHeart] = useState(null);
     const [onHeart, setOnHeart] = useState<boolean>(false);
+    
 
     const { songId } = useContext(AppContext);
 
@@ -71,10 +73,15 @@ export default function PlayerWidget() {
     }
 
     const onHeartPress = async () => {
+        const LibraryData = useSelector((state)=> state);
+        const dispatch = useDispatch();
+        
         if (!heart) {
-            return;
+            return
+            dispatch ({type: 'Remove'})
         } if (onHeart) {
-
+            return
+            dispatch ({type: 'Add'})
         }
     }
 
@@ -102,7 +109,7 @@ export default function PlayerWidget() {
                     </View>
                     <View style={styles.iconContainer}>
                         <TouchableOpacity onPress={onHeartPress}>
-                            <FontAwesome name={onHeart ? "heart" : "heart-o"} size={25} color='white' />
+                            <FontAwesome name={onHeart ? "heart" : "heart-o"} size={25} color='white'/>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={onPLayPausePress}>
                             <Ionicons name={isPlaying ? "pause" : "play"} size={28} color='white' />

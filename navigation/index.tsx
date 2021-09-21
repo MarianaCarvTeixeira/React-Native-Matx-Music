@@ -15,6 +15,7 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps, TabOneParamLi
 import LinkingConfiguration from './LinkingConfiguration';
 import AlbumScreen from '../screens/AlbumScreen';
 import Search from '../screens/Search';
+import Library from '../screens/Library';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -64,7 +65,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Library"
-        component={PlayerScreen}
+        component={Library}
         options={{
           title: 'Biblioteca',
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="playlist-music" size={30} style={{ marginBottom: -3 }} color={color} />,

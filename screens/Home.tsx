@@ -14,7 +14,6 @@ useEffect(()=>{
     try{
       const data= await API.graphql(graphqlOperation(listAlbumCategories));
       setCategories(data.data.listAlbumCategories.items)
-      console.log(data)
     } catch(e){
       console.log(e)
     }
