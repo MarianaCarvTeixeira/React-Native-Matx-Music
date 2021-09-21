@@ -18,6 +18,7 @@ export type RootStackParamList = {
   Modal: undefined;
   NotFound: undefined;
   AlbumScreen: undefined;
+  PlayerScreen: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -52,10 +53,6 @@ export type TabOneParamList = {
   TabOneScreen: undefined;
   AlbumScreen: undefined;
   PlayerScreen: undefined;
-};
-
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
 };
 
 export type Song = {

@@ -11,11 +11,12 @@ import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import Home from '../screens/Home';
 import PlayerScreen from '../screens/PlayerScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps, TabOneParamList, TabTwoParamList } from '../types';
-import LinkingConfiguration from './LinkingConfiguration';
 import AlbumScreen from '../screens/AlbumScreen';
-import Search from '../screens/Search';
 import Library from '../screens/Library';
+import { RootStackParamList, RootTabParamList, RootTabScreenProps, TabOneParamList} from '../types';
+import LinkingConfiguration from './LinkingConfiguration';
+
+
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -35,6 +36,7 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="AlbumScreen" component={AlbumScreen} options={{ title: 'Album' }} />
+      <Stack.Screen name="PlayerScreen" component={PlayerScreen} options={{ title: 'Musica' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>

@@ -9,7 +9,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AppContext } from '../../AppContext';
 import { API, graphqlOperation } from "aws-amplify"
 import { getSong } from '../../src/graphql/queries';
-import LibraryData from '../Reducer/Reducer';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function PlayerWidget() {
@@ -77,11 +76,9 @@ export default function PlayerWidget() {
         const dispatch = useDispatch();
         
         if (!heart) {
-            return
-            dispatch ({type: 'Remove'})
+            return  dispatch ({type: 'Remove'})
         } if (onHeart) {
-            return
-            dispatch ({type: 'Add'})
+            return  dispatch ({type: 'Add'})
         }
     }
 

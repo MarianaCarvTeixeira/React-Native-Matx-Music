@@ -1,18 +1,21 @@
 import * as React from 'react';
 import { FlatList, View, Text, Image } from 'react-native';
-import {useSelector} from 'react-redux'
+import LibraryData from '../components/Reducer/Reducer';
+import SongList from '../components/SongList';
 
 export default function Library() {
 
-    const LibraryData = useSelector((state) => {return state})
 
     return (
         <View>
             <View>
-                <Image source={{ uri: '../assets/images/eu' }} style={{ width: 80, height: 80 }} />
+                <Image source={{ uri: '../assets/images/M.png' }} style={{ width: 80, height: 80 }} />
                 <Text style={{ color: 'white' }}>Olá, Mariana Carvalho!</Text>
             </View>
-            <View>{LibraryData}</View>
+            <FlatList
+                data={data.LibraryData}
+                renderItem={({ item }) => <SongList song={item} />}
+                keyExtractor={(item) => item.id} />
         </View>
     )
 }
