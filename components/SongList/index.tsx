@@ -11,15 +11,16 @@ export type SongListProps = {
 export default function SongList(props: SongListProps) {
     const { song } = props;
 
-    const {setSongId} = useContext(AppContext);
+    const { setSongId } = useContext(AppContext);
 
     const onPlay = () => {
         setSongId(song.id);
     }
 
     return (
-        <View style={styles.container}>
-            <TouchableWithoutFeedback onPress={onPlay}>
+
+        <TouchableWithoutFeedback onPress={onPlay}>
+            <View style={styles.container}>
                 <View>
                     <Image source={{ uri: song.imageUri }} style={styles.image} />
                     <View style={styles.rightContainer}>
@@ -27,7 +28,8 @@ export default function SongList(props: SongListProps) {
                         <Text style={styles.artist}>{song.artist}</Text>
                     </View>
                 </View>
-            </TouchableWithoutFeedback>
-        </View>
+            </View>
+        </TouchableWithoutFeedback>
+
     )
 }

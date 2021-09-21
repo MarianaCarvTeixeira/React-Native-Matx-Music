@@ -9,6 +9,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AppContext } from '../../AppContext';
 import { API, graphqlOperation } from "aws-amplify"
 import { getSong } from '../../src/graphql/queries';
+import LibraryData from '../Reducer/Reducer';
 
 export default function PlayerWidget() {
 
@@ -17,6 +18,8 @@ export default function PlayerWidget() {
     const [duration, setDuration] = useState<number | null>(null);
     const [position, setPosition] = useState<number | null>(null);
     const [song, setSong] = useState(null);
+    const [heart, setHeart] = useState(null);
+    const [onHeart, setOnHeart] = useState<boolean>(false);
 
     const { songId } = useContext(AppContext);
 
@@ -67,6 +70,14 @@ export default function PlayerWidget() {
         }
     }
 
+    const onHeartPress = async () => {
+        if (!heart) {
+            return;
+        } if (onHeart) {
+
+        }
+    }
+
     const getProgress = () => {
         if (sound === null || duration === null || position === null) {
             return;
@@ -74,7 +85,7 @@ export default function PlayerWidget() {
         return (position / duration) * 100;
     }
 
-    if (!song){
+    if (!song) {
         return null;
     }
 
@@ -90,7 +101,9 @@ export default function PlayerWidget() {
                         <Text style={styles.artist}>{song.artist}</Text>
                     </View>
                     <View style={styles.iconContainer}>
-                        <FontAwesome name="heart-o" size={25} color='white' />
+                        <TouchableOpacity onPress={onHeartPress}>
+                            <FontAwesome name={onHeart ? "heart" : "heart-o"} size={25} color='white' />
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={onPLayPausePress}>
                             <Ionicons name={isPlaying ? "pause" : "play"} size={28} color='white' />
                         </TouchableOpacity>

@@ -10,7 +10,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import Home from '../screens/Home';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import PlayerScreen from '../screens/PlayerScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps, TabOneParamList, TabTwoParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import AlbumScreen from '../screens/AlbumScreen';
@@ -54,7 +54,7 @@ function BottomTabNavigator() {
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
 
-       <BottomTab.Screen
+      <BottomTab.Screen
         name="Home"
         component={Home}
         options={{
@@ -63,27 +63,11 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Search"
-        component={Search}
-        options={{
-          title: 'Buscar',
-          tabBarIcon: ({ color }) => <EvilIcons name="search" size={30} style={{ marginBottom: -3 }} color={color} />,
-        }}
-      />
-      <BottomTab.Screen
         name="Library"
-        component={TabTwoScreen}
+        component={PlayerScreen}
         options={{
           title: 'Biblioteca',
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="playlist-music" size={30} style={{ marginBottom: -3 }} color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Premium"
-        component={TabTwoScreen}
-        options={{
-          title: 'Premium',
-          tabBarIcon: ({ color }) => <FontAwesome5 name="mix" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -106,20 +90,14 @@ function TabOneNavigator() {
         component={AlbumScreen}
         options={{ headerTitle: 'Album' }}
       />
+
+      <TabOneStack.Screen
+        name="PlayerScreen"
+        component={AlbumScreen}
+        options={{ headerTitle: 'Album' }}
+      />
+
     </TabOneStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
-
-function TabTwoNavigator() {
-  return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
-      />
-    </TabTwoStack.Navigator>
-  );
-}

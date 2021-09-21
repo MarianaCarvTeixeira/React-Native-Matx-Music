@@ -51,6 +51,7 @@ export type Album = {
 export type TabOneParamList = {
   TabOneScreen: undefined;
   AlbumScreen: undefined;
+  PlayerScreen: undefined;
 };
 
 export type TabTwoParamList = {
