@@ -20,5 +20,6 @@
 - React Native // TypeScript
 - Expo
 - React Navigation
+- Redux
 - <b>Backend</b>
 - AWS Amplify
