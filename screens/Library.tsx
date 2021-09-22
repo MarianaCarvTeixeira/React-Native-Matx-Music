@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { FlatList, View, Text, Image } from 'react-native';
-import LibraryData from '../components/Reducer/Reducer';
+import Reducer from '../components/Reducer/Reducer';
 import SongList from '../components/SongList';
 
 export default function Library() {
@@ -13,7 +13,7 @@ export default function Library() {
                 <Text style={{ color: 'white' }}>Olá, Mariana Carvalho!</Text>
             </View>
             <FlatList
-                data={data.LibraryData}
+                data={Reducer.data}
                 renderItem={({ item }) => <SongList song={item} />}
                 keyExtractor={(item) => item.id} />
         </View>

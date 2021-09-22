@@ -1,6 +1,6 @@
 import {createStore} from "redux";
 
-export default function LibraryData(state = [], action) {
+export default function Reducer(state = [], action) {
 
     switch (action.type) {
         case 'Add':

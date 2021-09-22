@@ -9,19 +9,19 @@ import Amplify from 'aws-amplify'
 import config from './src/aws-exports'
 Amplify.configure(config)
 import { createStore } from 'redux';
-import LibraryData from './components/Reducer/Reducer';
 import { Provider } from 'react-redux';
 import { useSelector } from 'react-redux'
 import { AppContext } from './AppContext';
 import Library from './screens/Library';
-
+import Reducer from './components/Reducer/Reducer';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
-  const LibraryData = useSelector((state) => { return state })
-  const store = createStore(LibraryData);
+  
+  const Reducer = useSelector((state) => { return state })
+  const store = createStore(Reducer);
 
   const [songId, setSongId] = useState<string | null>(null);
 
@@ -29,20 +29,23 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <AppContext.Provider value={{
-          songId,
-          setSongId: (id: string) => setSongId(id),
-        }}>
-          <Provider store={store}>
-            <LibraryData/>
-            <Library/>
-          </Provider>
+      <>
+
+        <SafeAreaProvider>
+        <Provider store={store}>
+          <Library />
+          <Reducer/>
+        </Provider>
+          <AppContext.Provider value={{
+            songId,
+            setSongId: (id: string) => setSongId(id),
+          }}>
             <Navigation colorScheme={colorScheme} />
             <StatusBar />
             <PlayerWidget />
-        </AppContext.Provider>
-      </SafeAreaProvider >
+          </AppContext.Provider>
+        </SafeAreaProvider >
+      </>
     );
   }
 }
