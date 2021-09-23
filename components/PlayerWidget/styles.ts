@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     nameContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        margin: 15,
+        marginRight: 10,
         width: '80%'
     },
     dot: {

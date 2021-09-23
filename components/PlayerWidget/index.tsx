@@ -120,7 +120,7 @@ export default function PlayerWidget() {
 
     return (
             <View style={styles.container}>
-                <View style={[styles.progress, { width: `${getProgress()}%` }]} />
+                <View style={styles.progress} />
                 <View style={styles.row}>
                     <Image source={{ uri: Song.imageUri }} style={styles.image} />
                     <View style={styles.rightContainer}>

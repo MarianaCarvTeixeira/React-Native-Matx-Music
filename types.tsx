@@ -17,7 +17,6 @@ export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
-  PlayerScreen: undefined;
   AlbumScreen: undefined;
   PlayerWidget: undefined;
 };
@@ -30,7 +29,6 @@ export type RootTabParamList = {
   Home: undefined;
   Library: undefined;
   AlbumScreen: undefined;
-  PlayerScreen: undefined;
   PlayerWidget: undefined;
 };
 
@@ -46,15 +44,9 @@ export type Album = {
 export type TabOneParamList = {
   TabOneScreen: undefined;
   AlbumScreen: undefined;
-  PlayerScreen: undefined;
   PlayerWidget: undefined;
 };
 
-export type TabTwoParamList = {
-  TabOneScreen: undefined;
-  PlayerScreen: undefined;
-  PlayerWidget: undefined;
-};
 
 export type Song = {
   id: string;
