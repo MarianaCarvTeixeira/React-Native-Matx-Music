@@ -18,19 +18,18 @@ const styles = StyleSheet.create({
     },
     rightContainer: {
         flex: 1,
-        flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
     image: {
-        width: 75,
-        height: 75,
+        width: 100,
+        height: 100,
     },
     nameContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         margin: 15,
-        width: '35%'
+        width: '80%'
     },
     dot: {
         marginTop: 5,
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
     iconContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: 65,
+        width: '80%',
         justifyContent: 'space-between',
         margin: 10
     },

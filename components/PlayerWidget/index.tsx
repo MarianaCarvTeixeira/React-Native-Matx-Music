@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, Image, TouchableWithoutFeedback } from 'react-native'
+import { Text, View, Image } from 'react-native'
 import styles from './styles'
 import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from '@expo/vector-icons';
@@ -10,19 +10,10 @@ import { API, graphqlOperation } from "aws-amplify"
 import { getSong } from '../../src/graphql/queries';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import PlayerScreen from '../../screens/PlayerScreen';
 import { Song } from '../../types';
 
-export type SongProps = {
-    song: Song
-}
-export default function PlayerWidget(props: SongProps) {
 
-    const navigation = useNavigation();
-
-    const onPress = () => {
-        navigation.navigate('PlayerScreen', { id: props.song.id },)
-    };
+export default function PlayerWidget() {
 
     const [sound, setSound] = useState<Sound | null>(null);
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -35,6 +26,7 @@ export default function PlayerWidget(props: SongProps) {
     const dispatch = useDispatch();
     const Song = useSelector((state) => state.song);
     const songId = useSelector((state) => state.songId)
+    const album = useSelector((state) => state.album)
 
     useEffect(() => {
         const fetchSong = async () => {
@@ -85,6 +77,26 @@ export default function PlayerWidget(props: SongProps) {
         }
     }
 
+    const onBackPress = async () => {
+       let position = album.map((item, i)=>{
+           if(i==0){
+               return 0;
+           }
+           return i-1
+       })
+       dispatch({ type: 'SET_SONG', payload: album[position] })
+    }
+
+    const onNextPress = async () => {
+        let position = album.map((item, i)=>{
+            if(i==album.length-1){
+                return 0;
+            }
+            return i+1
+        })
+        dispatch({ type: 'SET_SONG', payload: album[position] })
+     }
+
     const onHeartPress = async () => {
         setOnHeart(!onHeart)
         if (!onHeart) {
@@ -107,7 +119,6 @@ export default function PlayerWidget(props: SongProps) {
     }
 
     return (
-        <TouchableWithoutFeedback onPress={onPress}>
             <View style={styles.container}>
                 <View style={[styles.progress, { width: `${getProgress()}%` }]} />
                 <View style={styles.row}>
@@ -119,16 +130,21 @@ export default function PlayerWidget(props: SongProps) {
                             <Text style={styles.artist}>{Song.artist}</Text>
                         </View>
                         <View style={styles.iconContainer}>
-                            <TouchableOpacity onPress={onHeartPress}>
-                                <FontAwesome name={onHeart ? "heart" : "heart-o"} size={25} color='white' />
+                            <TouchableOpacity onPress={onBackPress}>
+                                <Ionicons name={"caret-back-outline"} size={25} color='white' />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={onPLayPausePress}>
-                                <Ionicons name={isPlaying ? "pause" : "play"} size={28} color='white' />
+                                <Ionicons name={isPlaying ? "pause-circle-outline" : "caret-forward-circle-outline"} size={28} color='white' />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={onNextPress}>
+                                <Ionicons name={"caret-forward-outline"} size={25} color='white' />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={onHeartPress}>
+                                <FontAwesome name={onHeart ? "heart" : "heart-o"} size={25} color='white' />
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
             </View>
-        </TouchableWithoutFeedback>
     )
 }

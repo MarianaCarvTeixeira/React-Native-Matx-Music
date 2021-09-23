@@ -59,7 +59,7 @@ function BottomTabNavigator() {
 
       <BottomTab.Screen
         name="Home"
-        component={Home}
+        component={TabOneNavigator}
         options={{
           title: 'Inicio',
           tabBarIcon: ({ color }) => <Entypo name="home" size={30} style={{ marginBottom: -3 }} color={color} />,
