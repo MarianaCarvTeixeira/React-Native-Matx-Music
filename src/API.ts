@@ -97,6 +97,7 @@ export type Song = {
   uri: string,
   title: string,
   artist: string,
+  favorite: boolean,
   albumId: string,
   album?: Album | null,
   createdAt: string,
@@ -182,6 +183,7 @@ export type CreateSongInput = {
   uri: string,
   title: string,
   artist: string,
+  favorite: boolean,
   albumId: string,
 };
 
@@ -190,10 +192,18 @@ export type ModelSongConditionInput = {
   uri?: ModelStringInput | null,
   title?: ModelStringInput | null,
   artist?: ModelStringInput | null,
+  favorite?: ModelBooleanInput | null,
   albumId?: ModelIDInput | null,
   and?: Array< ModelSongConditionInput | null > | null,
   or?: Array< ModelSongConditionInput | null > | null,
   not?: ModelSongConditionInput | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
 export type UpdateSongInput = {
@@ -202,6 +212,7 @@ export type UpdateSongInput = {
   uri?: string | null,
   title?: string | null,
   artist?: string | null,
+  favorite?: boolean | null,
   albumId?: string | null,
 };
 
@@ -242,6 +253,7 @@ export type ModelSongFilterInput = {
   uri?: ModelStringInput | null,
   title?: ModelStringInput | null,
   artist?: ModelStringInput | null,
+  favorite?: ModelBooleanInput | null,
   albumId?: ModelIDInput | null,
   and?: Array< ModelSongFilterInput | null > | null,
   or?: Array< ModelSongFilterInput | null > | null,
@@ -411,6 +423,7 @@ export type CreateSongMutation = {
     uri: string,
     title: string,
     artist: string,
+    favorite: boolean,
     albumId: string,
     album?:  {
       __typename: "Album",
@@ -442,6 +455,7 @@ export type UpdateSongMutation = {
     uri: string,
     title: string,
     artist: string,
+    favorite: boolean,
     albumId: string,
     album?:  {
       __typename: "Album",
@@ -473,6 +487,7 @@ export type DeleteSongMutation = {
     uri: string,
     title: string,
     artist: string,
+    favorite: boolean,
     albumId: string,
     album?:  {
       __typename: "Album",
@@ -596,6 +611,7 @@ export type GetSongQuery = {
     uri: string,
     title: string,
     artist: string,
+    favorite: boolean,
     albumId: string,
     album?:  {
       __typename: "Album",
@@ -630,6 +646,7 @@ export type ListSongsQuery = {
       uri: string,
       title: string,
       artist: string,
+      favorite: boolean,
       albumId: string,
       createdAt: string,
       updatedAt: string,
@@ -766,6 +783,7 @@ export type OnCreateSongSubscription = {
     uri: string,
     title: string,
     artist: string,
+    favorite: boolean,
     albumId: string,
     album?:  {
       __typename: "Album",
@@ -792,6 +810,7 @@ export type OnUpdateSongSubscription = {
     uri: string,
     title: string,
     artist: string,
+    favorite: boolean,
     albumId: string,
     album?:  {
       __typename: "Album",
@@ -818,6 +837,7 @@ export type OnDeleteSongSubscription = {
     uri: string,
     title: string,
     artist: string,
+    favorite: boolean,
     albumId: string,
     album?:  {
       __typename: "Album",

@@ -24,7 +24,9 @@ type Song @model @key(name: "byAlbum", fields: ["albumId"]) {
   uri: String!
   title: String!
   artist: String!
+  favorite: Boolean!
 
   albumId: ID!
   album: Album @connection(fields: ["albumId"])
 }
+

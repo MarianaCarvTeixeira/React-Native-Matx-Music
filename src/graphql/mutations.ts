@@ -142,6 +142,7 @@ export const createSong = /* GraphQL */ `
       uri
       title
       artist
+      favorite
       albumId
       album {
         id
@@ -170,6 +171,7 @@ export const updateSong = /* GraphQL */ `
       uri
       title
       artist
+      favorite
       albumId
       album {
         id
@@ -198,6 +200,7 @@ export const deleteSong = /* GraphQL */ `
       uri
       title
       artist
+      favorite
       albumId
       album {
         id

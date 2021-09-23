@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Text, View, Image, TouchableWithoutFeedback, } from 'react-native'
 import { Song } from '../../types';
 import styles from './styles'
-import { AppContext } from '../../AppContext';
+import { useSelector, useDispatch } from 'react-redux';
 
 export type SongListProps = {
     song: Song
@@ -11,10 +11,13 @@ export type SongListProps = {
 export default function SongList(props: SongListProps) {
     const { song } = props;
 
-    const { setSongId } = useContext(AppContext);
+    const songId = useSelector((state) => state.songId)
+    const dispatch = useDispatch()
+    
 
-    const onPlay = () => {
-        setSongId(song.id);
+    const onPlay = async () => {
+       await dispatch({ type: 'SET_SONG_ID', payload: song.id })
+       console.log(songId)
     }
 
     return (

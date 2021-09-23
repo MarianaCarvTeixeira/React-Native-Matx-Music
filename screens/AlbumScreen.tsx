@@ -5,6 +5,8 @@ import SongList from '../components/SongList';
 import AlbumHeader from '../components/AlbumHeader';
 import{API, graphqlOperation} from "aws-amplify"
 import {getAlbum} from "../src/graphql/queries"
+import { useSelector, useDispatch } from 'react-redux';
+
 
 export default function AlbumScreen(){
 
@@ -12,18 +14,26 @@ export default function AlbumScreen(){
     const albumId = route.params.id;
 
     const [album, setAlbum] = useState(null)
+    const album2 = useSelector((state) => state.album);
+    const dispatch = useDispatch();
+    
 
     useEffect(() =>{
         const fetchAlbumDetails = async() =>{
             try{
                 const data = await API.graphql(graphqlOperation(getAlbum, {id: albumId}))
-                setAlbum(data.data.getAlbum)
+                dispatch ({type: 'SET_ALBUM', payload: data.data.getAlbum})
             } catch(e) {
                 console.log(e);
             }
         }
         fetchAlbumDetails();
     }, [])
+    useEffect(()=>{
+        if(album2.songs.items){
+            setAlbum(album2)
+        }
+    }, [album2])
 
     if(!album){
         return <Text></Text>

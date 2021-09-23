@@ -13,7 +13,7 @@ import Home from '../screens/Home';
 import PlayerScreen from '../screens/PlayerScreen';
 import AlbumScreen from '../screens/AlbumScreen';
 import Library from '../screens/Library';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps, TabOneParamList} from '../types';
+import { RootStackParamList, RootTabParamList, RootTabScreenProps, TabOneParamList, TabTwoParamList} from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
 
@@ -37,7 +37,7 @@ function RootNavigator() {
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="AlbumScreen" component={AlbumScreen} options={{ title: 'Album' }} />
       <Stack.Screen name="PlayerScreen" component={PlayerScreen} options={{ title: 'Musica' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+      <Stack.Group screenOptions={{ presentation: 'fullScreenModal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
     </Stack.Navigator>
@@ -94,10 +94,22 @@ function TabOneNavigator() {
         options={{ headerTitle: 'Album' }}
       />
 
+    </TabOneStack.Navigator>
+  );
+}
+function TabTwoNavigator() {
+  return (
+    <TabOneStack.Navigator>
       <TabOneStack.Screen
-        name="PlayerScreen"
+        name="AlbumScreen"
         component={AlbumScreen}
         options={{ headerTitle: 'Album' }}
+      />
+
+      <TabOneStack.Screen
+        name="PlayerScreen"
+        component={PlayerScreen}
+        options={{ headerTitle: 'Musica' }}
       />
 
     </TabOneStack.Navigator>
