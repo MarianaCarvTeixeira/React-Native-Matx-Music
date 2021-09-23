@@ -9,6 +9,7 @@ Amplify.configure(config)
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import combineReducers from './Reducers/index'
+import PlayerWidget from './components/PlayerWidget';
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <Provider store={store}>
           <Navigation colorScheme={colorScheme} />
           <StatusBar/>
+          <PlayerWidget/>
         </Provider>
       </>
     );
