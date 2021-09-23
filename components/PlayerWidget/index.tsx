@@ -11,14 +11,17 @@ import { getSong } from '../../src/graphql/queries';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import PlayerScreen from '../../screens/PlayerScreen';
+import { Song } from '../../types';
 
-
+export type AlbumProps = {
+    song: Song
+}
 export default function PlayerWidget() {
 
     const navigation = useNavigation();
 
     const onPress = () => {
-        navigation.navigate('PlayerScreen', { id: props.album.id },)
+        navigation.navigate('PlayerScreen', { id: props.song.id },)
     };
 
     const [sound, setSound] = useState<Sound | null>(null);
