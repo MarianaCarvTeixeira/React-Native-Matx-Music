@@ -13,10 +13,10 @@ import { useNavigation } from '@react-navigation/native';
 import PlayerScreen from '../../screens/PlayerScreen';
 import { Song } from '../../types';
 
-export type AlbumProps = {
+export type SongProps = {
     song: Song
 }
-export default function PlayerWidget() {
+export default function PlayerWidget(props: SongProps) {
 
     const navigation = useNavigation();
 
