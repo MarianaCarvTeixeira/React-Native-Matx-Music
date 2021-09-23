@@ -78,7 +78,7 @@ export default function PlayerWidget() {
     }
 
     const onBackPress = async () => {
-       let position = album.map((item, i)=>{
+       let position = album.map((item: any, i: number)=>{
            if(i==0){
                return 0;
            }
@@ -88,7 +88,7 @@ export default function PlayerWidget() {
     }
 
     const onNextPress = async () => {
-        let position = album.map((item, i)=>{
+        let position = album.map((item: any, i: number)=>{
             if(i==album.length-1){
                 return 0;
             }

@@ -2,16 +2,11 @@ import React, { useEffect } from 'react';
 import { FlatList, View, Text, Image, StyleSheet } from 'react-native';
 import SongList from '../components/SongList';
 import { useSelector} from 'react-redux';
-import { useFocusEffect } from '@react-navigation/core';
 
 
 export default function Library() {
 
     const Library = useSelector((state)=> state.library);
-
-    useFocusEffect(()=>{
-        console.log(Library)
-    })
 
 
     return (

@@ -3,18 +3,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { ColorSchemeName } from 'react-native';
+import { ColorSchemeName, Pressable } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import Home from '../screens/Home';
+import { RootStackParamList, RootTabParamList, TabOneParamList } from '../types';
+import LinkingConfiguration from './LinkingConfiguration';
 import AlbumScreen from '../screens/AlbumScreen';
 import Library from '../screens/Library';
-import { RootStackParamList, RootTabParamList, TabOneParamList} from '../types';
-import LinkingConfiguration from './LinkingConfiguration';
-
-
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -33,9 +31,7 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="AlbumScreen" component={AlbumScreen} options={{ title: 'Album' }} />
-      <Stack.Group screenOptions={{ presentation: 'fullScreenModal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
     </Stack.Navigator>
   );
 }
@@ -53,11 +49,11 @@ function BottomTabNavigator() {
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
 
-      <BottomTab.Screen
+       <BottomTab.Screen
         name="Home"
         component={TabOneNavigator}
         options={{
-          headerShown: false,
+          title: 'Inicio',
           tabBarIcon: ({ color }) => <Entypo name="home" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
@@ -89,8 +85,6 @@ function TabOneNavigator() {
         component={AlbumScreen}
         options={{ headerTitle: 'Album' }}
       />
-
     </TabOneStack.Navigator>
   );
 }
-
