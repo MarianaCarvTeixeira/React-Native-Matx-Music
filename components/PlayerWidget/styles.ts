@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     nameContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginRight: 10,
+        margin: 10,
         width: '80%'
     },
     dot: {
@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     title: {
         color: 'white',
         fontSize: 16,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        marginRight: 10,
     },
     artist: {
         color: 'lightgray',
