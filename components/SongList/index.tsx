@@ -17,7 +17,6 @@ export default function SongList(props: SongListProps) {
 
     const onPlay = async () => {
        await dispatch({ type: 'SET_SONG_ID', payload: song.id })
-       console.log(songId)
     }
 
     return (

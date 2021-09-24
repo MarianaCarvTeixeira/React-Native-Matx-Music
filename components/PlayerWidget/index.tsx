@@ -3,14 +3,13 @@ import { Text, View, Image } from 'react-native'
 import styles from './styles'
 import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
 import { Sound } from "expo-av/build/Audio/Sound";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { API, graphqlOperation } from "aws-amplify"
 import { getSong } from '../../src/graphql/queries';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
 import { Song } from '../../types';
+
 
 
 export default function PlayerWidget() {
@@ -27,6 +26,7 @@ export default function PlayerWidget() {
     const Song = useSelector((state) => state.song);
     const songId = useSelector((state) => state.songId)
     const album = useSelector((state) => state.album)
+    const [idSong, setisSong] = useState<number | null>();
 
     useEffect(() => {
         const fetchSong = async () => {
@@ -81,29 +81,24 @@ export default function PlayerWidget() {
         let position = album.songs.items.map((item: Song) => {
             return item.id
         }).indexOf(songId)
-        let previousPosition = position--
-        console.log(previousPosition)
-        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[previousPosition] , Song})
+        let previousPosition = position - 1
+        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[previousPosition].id})
     }
 
     const onNextPress = async () => {
         let position = album.songs.items.map((item: Song) => {
             return item.id
         }).indexOf(songId)
-        let nextPosition = position++
-        console.log(position, songId, nextPosition)
-        console.warn(album.songs.items)
-        console.log(album.songs.items[position], Song)
-        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[nextPosition] , Song})
+        let nextPosition = position + 1
+        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[nextPosition].id})
     } 
 
     const onHeartPress = async () => {
         setOnHeart(!onHeart)
         if (!onHeart) {
-            console.log(Song)
-            return dispatch({ type: 'Remove', payload: Song })
+            return dispatch({ type: 'Remove', payload: songId })
         } if (onHeart) {
-            return dispatch({ type: 'Add', paylod: Song })
+            return dispatch({ type: 'Add', paylod: songId })
         }
     }
 
