@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
         borderWidth: 1.5,
         width: 65,
         height: 65,
-        resizeMode: 'contain',
         marginHorizontal: 20,
     },
     text:{

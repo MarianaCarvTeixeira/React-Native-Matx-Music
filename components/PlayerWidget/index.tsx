@@ -16,7 +16,7 @@ import { Song } from '../../types';
 export default function PlayerWidget() {
 
     const [sound, setSound] = useState<Sound | null>(null);
-    const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [isPlaying, setIsPlaying] = useState<boolean>(true);
     const [duration, setDuration] = useState<number | null>(null);
     const [position, setPosition] = useState<number | null>(null);
     const [song, setSong] = useState(null);
@@ -33,7 +33,6 @@ export default function PlayerWidget() {
             try {
                 const data = await API.graphql(graphqlOperation(getSong, { id: songId }))
                 dispatch({ type: 'SET_SONG', payload: data.data.getSong })
-                console.log(data.data.getSong)
             } catch (e) {
                 console.log(e)
             }
@@ -79,22 +78,24 @@ export default function PlayerWidget() {
     }
 
     const onBackPress = async () => {
-        let position = album.songs.items.map((item: any, i: number) => {
+        let position = album.songs.items.map((item: Song) => {
             return item.id
         }).indexOf(songId)
         let previousPosition = position--
-
-        dispatch({ type: 'SET_SONG', payload: album[previousPosition] })
+        console.log(previousPosition)
+        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[previousPosition] , Song})
     }
 
     const onNextPress = async () => {
-        let position = album.songs.items.map((item: any, i: number) => {
+        let position = album.songs.items.map((item: Song) => {
             return item.id
         }).indexOf(songId)
         let nextPosition = position++
-
-        dispatch({ type: 'SET_SONG', payload: album[nextPosition] })
-    }
+        console.log(position, songId, nextPosition)
+        console.warn(album.songs.items)
+        console.log(album.songs.items[position], Song)
+        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[nextPosition] , Song})
+    } 
 
     const onHeartPress = async () => {
         setOnHeart(!onHeart)
@@ -119,7 +120,7 @@ export default function PlayerWidget() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.progress} />
+            <View style={[styles.progress, { width: `${getProgress()}%` }]} />
             <View style={styles.row}>
                 <Image source={{ uri: Song.imageUri }} style={styles.image} />
                 <View style={styles.rightContainer}>
