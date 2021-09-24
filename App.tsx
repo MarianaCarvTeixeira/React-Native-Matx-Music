@@ -10,8 +10,9 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import combineReducers from './Reducers/index'
 import PlayerWidget from './components/PlayerWidget';
+import { LogBox } from 'react-native';
 
-
+LogBox.ignoreAllLogs();
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
