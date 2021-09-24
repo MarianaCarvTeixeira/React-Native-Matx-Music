@@ -53,7 +53,7 @@ function BottomTabNavigator() {
         name="Home"
         component={TabOneNavigator}
         options={{
-          title: 'Inicio',
+          headerShown: false,
           tabBarIcon: ({ color }) => <Entypo name="home" size={30} style={{ marginBottom: -3 }} color={color} />,
         }}
       />

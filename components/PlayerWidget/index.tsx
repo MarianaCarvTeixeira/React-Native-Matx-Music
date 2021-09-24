@@ -88,7 +88,6 @@ export default function PlayerWidget() {
     }
 
     const onNextPress = async () => {
-        // console.log('ddddddddddddddddddd', album.songs.items)
         let position = album.songs.items.map((item: any, i: number) => {
             return item.id
         }).indexOf(songId)
