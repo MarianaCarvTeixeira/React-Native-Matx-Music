@@ -41,6 +41,7 @@ export default function PlayerWidget() {
         fetchSong();
     }, [songId])
 
+
     const onPlaybackStatusUpdate = (status: any) => {
         setIsPlaying(status.isPlaying)
         setDuration(status.durationMillis)
@@ -78,33 +79,32 @@ export default function PlayerWidget() {
     }
 
     const onBackPress = async () => {
-       let position = album.map((item: any, i: number)=>{
-           if(i==0){
-               return 0;
-           }
-           return i-1
-       })
-       dispatch({ type: 'SET_SONG', payload: album[position] })
+        let position = album.songs.items.map((item: any, i: number) => {
+            return item.id
+        }).indexOf(songId)
+        let previousPosition = position--
+
+        dispatch({ type: 'SET_SONG', payload: album[previousPosition] })
     }
 
     const onNextPress = async () => {
-        let position = album.map((item: any, i: number)=>{
-            if(i==album.length-1){
-                return 0;
-            }
-            return i+1
-        })
-        dispatch({ type: 'SET_SONG', payload: album[position] })
-     }
+        // console.log('ddddddddddddddddddd', album.songs.items)
+        let position = album.songs.items.map((item: any, i: number) => {
+            return item.id
+        }).indexOf(songId)
+        let nextPosition = position++
+
+        dispatch({ type: 'SET_SONG', payload: album[nextPosition] })
+    }
 
     const onHeartPress = async () => {
         setOnHeart(!onHeart)
         if (!onHeart) {
+            console.log(Song)
             return dispatch({ type: 'Remove', payload: Song })
         } if (onHeart) {
             return dispatch({ type: 'Add', paylod: Song })
         }
-        console.log(Library)
     }
 
     const getProgress = () => {
@@ -114,37 +114,36 @@ export default function PlayerWidget() {
         return (position / duration) * 100;
     }
 
-    if (!Song) {
+    if (!sound) {
         return null;
     }
 
     return (
-            <View style={styles.container}>
-                <View style={styles.progress} />
-                <View style={styles.row}>
-                    <Image source={{ uri: Song.imageUri }} style={styles.image} />
-                    <View style={styles.rightContainer}>
-                        <View style={styles.nameContainer}>
-                            <Text style={styles.title}>{Song.title}</Text>
-                            <Entypo name="dot-single" size={23} color='white' style={styles.dot} />
-                            <Text style={styles.artist}>{Song.artist}</Text>
-                        </View>
-                        <View style={styles.iconContainer}>
-                            <TouchableOpacity onPress={onBackPress}>
-                                <Ionicons name={"caret-back-outline"} size={25} color='white' />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={onPLayPausePress}>
-                                <Ionicons name={isPlaying ? "pause-circle-outline" : "caret-forward-circle-outline"} size={28} color='white' />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={onNextPress}>
-                                <Ionicons name={"caret-forward-outline"} size={25} color='white' />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={onHeartPress}>
-                                <FontAwesome name={onHeart ? "heart" : "heart-o"} size={25} color='white' />
-                            </TouchableOpacity>
-                        </View>
+        <View style={styles.container}>
+            <View style={styles.progress} />
+            <View style={styles.row}>
+                <Image source={{ uri: Song.imageUri }} style={styles.image} />
+                <View style={styles.rightContainer}>
+                    <View style={styles.nameContainer}>
+                        <Text style={styles.title}>{Song.title}</Text>
+                        <Text style={styles.artist}>{Song.artist}</Text>
+                    </View>
+                    <View style={styles.iconContainer}>
+                        <TouchableOpacity onPress={onBackPress}>
+                            <Ionicons name={"caret-back-outline"} size={25} color='white' />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={onPLayPausePress}>
+                            <Ionicons name={isPlaying ? "pause-circle-outline" : "caret-forward-circle-outline"} size={28} color='white' />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={onNextPress}>
+                            <Ionicons name={"caret-forward-outline"} size={25} color='white' />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={onHeartPress}>
+                            <FontAwesome name={onHeart ? "heart" : "heart-o"} size={25} color='white' />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
+        </View>
     )
 }
