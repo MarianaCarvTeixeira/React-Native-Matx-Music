@@ -9,8 +9,8 @@ import { API, graphqlOperation } from "aws-amplify"
 import { getSong } from '../../src/graphql/queries';
 import { useSelector, useDispatch } from 'react-redux';
 import { Song } from '../../types';
-
-
+import Library from '../../screens/Library';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function PlayerWidget() {
 
@@ -27,6 +27,7 @@ export default function PlayerWidget() {
     const songId = useSelector((state) => state.songId)
     const album = useSelector((state) => state.album)
     const [idSong, setisSong] = useState<number | null>();
+    const [favorites, setFavorites] = useState<Array<Song>>([]);
 
     useEffect(() => {
         const fetchSong = async () => {
@@ -82,7 +83,7 @@ export default function PlayerWidget() {
             return item.id
         }).indexOf(songId)
         let previousPosition = position - 1
-        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[previousPosition].id})
+        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[previousPosition].id })
     }
 
     const onNextPress = async () => {
@@ -90,16 +91,39 @@ export default function PlayerWidget() {
             return item.id
         }).indexOf(songId)
         let nextPosition = position + 1
-        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[nextPosition].id})
-    } 
+        dispatch({ type: 'SET_SONG_ID', payload: album.songs.items[nextPosition].id })
+    }
 
     const onHeartPress = async () => {
-        setOnHeart(!onHeart)
-        if (!onHeart) {
-            return dispatch({ type: 'Remove', payload: songId })
-        } if (onHeart) {
-            return dispatch({ type: 'Add', paylod: songId })
-        }
+        let newFavorites = [...favorites]
+        newFavorites.push(Song)
+        setFavorites(newFavorites)
+        console.log(favorites)
+
+        // let heartId = album.songs.items.map((item: Song) => {
+        //     return item.id
+        // })
+        // console.log(heartId)
+        // //pegando o id
+        // let addLibrary = Library.push(heartId)     
+        // //adicionando o id da musica no array
+        // console.log(onHeart)
+        // if ([Library].includes(heartId)) {
+        //      return (onHeart)
+        // }
+        // //checa se a musica está no array
+
+        //  let removeLibrary = Library.pop(songId)
+        //  //removendo o id da musica no array
+
+        // setOnHeart(!onHeart)
+
+        // //retorno das ações acima para a página onde devem ser lidas
+        // if (!onHeart) {
+        //     return dispatch({ type: 'Remove', payload: album.songs.items[removeLibrary].id  })
+        // } if (onHeart) {
+        //     return dispatch({ type: 'Add', paylod: album.songs.items[addLibrary].id  })
+        // }
     }
 
     const getProgress = () => {

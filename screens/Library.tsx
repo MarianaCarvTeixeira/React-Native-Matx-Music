@@ -8,6 +8,7 @@ import { useSelector} from 'react-redux';
 export default function Library() {
 
     const Library = useSelector((state)=> state.library);
+    console.log(Library)
     
     return (
         <View style={styles.container}>

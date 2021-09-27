@@ -124,6 +124,7 @@ export const getSong = /* GraphQL */ `
       uri
       title
       artist
+      favorite
       albumId
       album {
         id
