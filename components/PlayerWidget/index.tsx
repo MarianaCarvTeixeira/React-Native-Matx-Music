@@ -42,16 +42,20 @@ export default function PlayerWidget() {
     }, [songId])
 
 
+
     const onPlaybackStatusUpdate = (status: any) => {
         setIsPlaying(status.isPlaying)
         setDuration(status.durationMillis)
         setPosition(status.positionMillis)
+
+        
     }
 
     const playCurrentSong = async () => {
         if (sound) {
             await sound.unloadAsync();
         }
+        
         const { sound: newSound } = await Sound.createAsync(
             { uri: Song.uri },
             { shouldPlay: isPlaying },
@@ -65,7 +69,6 @@ export default function PlayerWidget() {
             playCurrentSong();
         }
     }, [Song])
-
 
     const onPLayPausePress = async () => {
         if (!sound) {
@@ -95,35 +98,30 @@ export default function PlayerWidget() {
     }
 
     const onHeartPress = async () => {
-        let newFavorites = [...favorites]
-        newFavorites.push(Song)
-        setFavorites(newFavorites)
-        console.log(favorites)
 
-        // let heartId = album.songs.items.map((item: Song) => {
-        //     return item.id
-        // })
-        // console.log(heartId)
-        // //pegando o id
-        // let addLibrary = Library.push(heartId)     
-        // //adicionando o id da musica no array
-        // console.log(onHeart)
-        // if ([Library].includes(heartId)) {
-        //      return (onHeart)
-        // }
-        // //checa se a musica está no array
+        setOnHeart(!onHeart)
+        if (onHeart) {
+            let newFavorites = [...favorites]
+            newFavorites.push(Song)
+            setFavorites(newFavorites)
+            try {
+                const favoritesJson = JSON.stringify(favorites)
+                await AsyncStorage.setItem('localFavorites', favoritesJson)
+            } catch (e) {
+                console.log(e)
+            }
+        } if (!onHeart) {
+            let newFavorites = [...favorites]
+            newFavorites.splice(Song)
+            setFavorites(newFavorites)
+            try {
+                const favoritesJson = JSON.stringify(favorites)
+                await AsyncStorage.setItem('localFavorites', favoritesJson)
+            } catch (e) {
+                console.log(e)
+            }
+        }
 
-        //  let removeLibrary = Library.pop(songId)
-        //  //removendo o id da musica no array
-
-        // setOnHeart(!onHeart)
-
-        // //retorno das ações acima para a página onde devem ser lidas
-        // if (!onHeart) {
-        //     return dispatch({ type: 'Remove', payload: album.songs.items[removeLibrary].id  })
-        // } if (onHeart) {
-        //     return dispatch({ type: 'Add', paylod: album.songs.items[addLibrary].id  })
-        // }
     }
 
     const getProgress = () => {
@@ -132,7 +130,6 @@ export default function PlayerWidget() {
         }
         return (position / duration) * 100;
     }
-
     if (!sound) {
         return null;
     }

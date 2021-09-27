@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, StyleSheet} from 'react-native';
 import {useRoute} from '@react-navigation/native'
 import SongList from '../components/SongList';
 import AlbumHeader from '../components/AlbumHeader';
@@ -50,3 +50,4 @@ export default function AlbumScreen(){
         </View>
     )
 }
+
