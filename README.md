@@ -23,3 +23,5 @@
 - Redux
 - <b>Backend</b>
 - AWS Amplify
+
+<b>Status</b> : Em desenvolvimento
